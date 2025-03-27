@@ -1,0 +1,142 @@
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.25); /* Bootstrap default blue glow */
+}
+.bgimage {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://img.freepik.com/premium-photo/plane-flying-clouds-with-word-air-it_887562-2617.jpg') 
+                no-repeat center center/cover;
+}
+
+
+.bg-image{
+    background-image: url('https://thumbs.dreamstime.com/b/airplane-transportation-jet-air-plane-flies-blue-sky-35213513.jpg');
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh;
+    /* max-width: 100%;
+    height: 100%; */
+}
+.bg{
+    background-color: #005b99;
+}
+.bgcolor{
+    background-color: #6497b1;
+}
+
+.tablecolor{
+    background-color: #a3c1da;
+}
+
+body{
+    background-color: #a4c8e1 !important;
+    
+}
+.table {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.table thead {
+    background-color: #007bff !important;
+    color: white;
+}
+
+.bg-blue {
+    background-color: rgba(173, 216, 230, 0.9) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.datacolor{
+    background-color: #4682b4;
+}
+.heit{
+    height: 85%;
+}
+
+.login{
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btncolor:hover {
+    background-color: #03396c !important;
+    border-color: #03396c  ;
+    color: white !important;
+}
+
+.btncolor1:hover {
+    background-color: #005b96 !important;
+    border-color: #005b96;
+    color: white !important;
+}
+
+.btncolor2:hover {
+    background-color:  #6497b1 !important;
+    border-color:  #6497b1;
+    color: white !important;
+}
+
+/* Responsive Fix for Laptop Screens */
+@media (max-width: 1024px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+/* Add spacing between form elements in adminloggedpage*/
+@media (max-width: 576px) {
+    .row .col-md-3 {
+        margin-bottom: 10px; /* Adds space between inputs/buttons */
+    }
+}
+
+/* Add spacing between buttons in mobile view to improve readability in employeelist page */
+@media (max-width: 576px) {
+    .btn {
+        margin-bottom: 5px;
+    }
+}
+
+:root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --bg-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+        }
+
+        .form-container {
+            max-width: 900px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        .btn {
+            border-radius: 8px;
+        }
+
+        .navbar {
+            background-color: var(--bg-color) !important;
+            color: black !important;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+        }
