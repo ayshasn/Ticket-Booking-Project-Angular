@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="full-page-container">  
+    <main class="container my-4 mt-3">
+        <h2 class="text-center text-dark mt-4">Employee Travel History</h2>
+
+
+
+        <!-- Employee History Table -->
+        <section class="table-responsive shadow-sm">
+            <table class="table table-hover text-center table-primary shadow rounded w-100 mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>SN.No</th>
+                        <th>Manager Name</th>
+                        <th>From Location</th>
+                        <th>To Location</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of details; let i = index">
+                        <td>{{i + 1}}</td>
+                        <!-- <td>{{ticket.employee}}</td> -->
+                        <td>{{managerName}}</td>
+                        <td>{{ticket.from_location}}</td>
+                        <td>{{ticket.to_location}}</td>
+                        <td>{{ticket.start_date}}</td>
+                        <td>{{ticket.end_date}}</td>
+                        
+                        
+                        <td><span class="badge" [ngClass]="{'bg-warning': ticket.status === 'pending', 'bg-danger': ticket.status === 'Rejected', 'bg-secondary': ticket.status === 'Not Responded','bg-success': ticket.status === 'Approved'}">{{ticket.status}}</span></td>
+                        <td>
+                            <button [routerLink]="['/employee/viewrequest', ticket.id]" class="btn btn-info btn-sm">View</button>
+
+                            <button (click)="selectedTicketId = ticket.id" class="btn btn-outline-danger btn-sm ms-2"  data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>   
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<section class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <section class="modal-dialog">
+        <section class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                Are you sure you want to delete this request?
+            </section>
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button (click)="deleteTicket()" type="button" class="btn btn-danger"  data-bs-dismiss="modal">Yes, Delete</button>
+            </footer>
+        </section>
+    </section>
+</section>
+
+<!-- Delete Success Modal -->
+<section class="modal fade" id="deleteSuccess" tabindex="-1" aria-hidden="true">
+    <section class="modal-dialog">
+        <section class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                Deleted successfully!
+            </section>
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </footer>
+        </section>
+    </section>
+</section>
+

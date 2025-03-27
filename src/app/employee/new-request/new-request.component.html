@@ -1,0 +1,114 @@
+<app-header></app-header>
+<body>
+    <main class="container my-5">
+                        <!-- Travel Request Form -->
+        <section class="container-fluid p-5 bg-light mt-4 rounded shadow form-container">
+            <form class="row g-3 needs-validation" novalidate [formGroup]="travelForm" (ngSubmit)="newTicket()">
+                <section class="row text-center">
+                    <h3>Travel Request Form</h3>
+                </section>
+
+                <section class="col-md-4">
+                    <label for="validationCustom01" class="form-label">Manager Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" required value="{{managerName}}" readonly>
+                </section>
+                <section class="col-md-4">
+                    <label for="validationCustom02" class="form-label">From Location</label>
+                    <input type="text" class="form-control" id="validationCustom02" required formControlName="from_location">
+                </section>
+                <section class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label">To Location</label>
+                    <input type="text" class="form-control" id="validationCustomUsername" required formControlName="to_location">
+                </section>
+
+                <section class="col-md-3">
+                    <label for="validationCustom03" class="form-label">From Date</label>
+                    <input type="text" class="form-control" placeholder="DD-MM-YY" required formControlName="start_date">
+                </section>
+                <section class="col-md-3">
+                    <label for="validationCustom04" class="form-label">To Date</label>
+                    <input type="text" class="form-control" placeholder="DD-MM-YY" required formControlName="end_date">
+                </section>
+                <section class="col-md-3">
+                    <label class="form-label">Lodging Required</label>
+                    <select class="form-select" required formControlName="lodging_required" class="form-control">
+                        <option selected disabled value="">Choose...</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </section>
+                <section class="col-md-3">
+                    <label class="form-label">Lodging Location</label>
+                    <input type="text" class="form-control" required formControlName="hotel_preference">
+                </section>
+                <section class="col-md-3">
+                    <label class="form-label">Travel Mode</label>
+                    <select class="form-select" required formControlName="travel_mode" class="form-control">
+                        <option selected disabled value="">Choose...</option>
+                        <option>Air</option>
+                        <option>Train</option>
+                        <option>Car</option>
+                        <option>Bus</option>
+                        <option>Ship</option>
+                    </select>
+                </section>
+                <section class="col-md-5">
+                    <label class="form-label">Purpose of Travel</label>
+                    <textarea class="form-control" rows="2" formControlName = "purpose_of_travel"></textarea>
+                </section>
+                <!-- <section class="col-md-4">
+                    <label class="form-label">Manager</label>
+                    <input type="text" class="form-control" value="John Doe" readonly formControlName="manager"> 
+                </section> -->
+                
+                <section class="col-md-12">
+                    <label class="form-label">Additional Request</label>
+                    <textarea class="form-control" rows="2" formControlName="additional_notes"></textarea>
+                </section>
+           <section class="col-12 d-flex justify-content-center mt-4 gap-2">
+                    <button class="btn btn-primary" type="submit" data-bs-toggle="modal"
+                        data-bs-target="#submitModal" >Submit</button>
+                    <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                        data-bs-target="#cancelModal">Cancel</button>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <!-- Submission Success Modal -->
+    <section class="modal fade" id="submitModal" tabindex="-1">
+        <section class="modal-dialog">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title">Request Submitted</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body">
+                    Your travel request has been submitted successfully!
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                </footer>
+            </section>
+        </section>
+    </section>
+
+    <!-- Cancel Confirmation Modal -->
+    <section class="modal fade" id="cancelModal" tabindex="-1">
+        <section class="modal-dialog">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title">Confirm Cancellation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body">
+                    Are you sure you want to cancel your request?
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                </footer>
+            </section>
+        </section>
+    </section>
+</body>

@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<section class="container col-md-6 p-4 bg-light mt-4 rounded shadow">
+    <h2 class="text-center text-dark mb-4">Add Manager</h2>
+
+    <form class="row g-3" [formGroup]="managerForm">
+        <section class="col-md-12">
+            <input type="text" class="form-control" formControlName="first_name" placeholder="First Name" required aria-label="First Name">
+        </section>
+        <section class="col-md-12">
+            <input type="text" class="form-control" formControlName="last_name" placeholder="Last Name" required aria-label="Last Name">
+        </section>
+        <section class="col-md-12">
+            <input type="text" class="form-control" formControlName="designation" placeholder="Designation" required aria-label="Designation">
+        </section>  
+        
+        <section class="col-md-12">
+            
+            <select class="form-select" formControlName="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </section>
+
+        <section class="col-md-12">
+            <input type="text" class="form-control" formControlName="username" placeholder="Username" required aria-label="Username">
+        </section>
+        <section class="col-md-12">
+            <input type="email" class="form-control" formControlName="email" placeholder="Email" required aria-label="Email">
+        </section>
+        <section class="col-md-12">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" required aria-label="Password">
+        </section>
+        <section class="col-md-12">
+            <input type="password" class="form-control" placeholder="Confirm Password" required aria-label="Confirm Password">
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="row justify-content-between p-3 mt-3">
+            <section class="col-md-4">
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">
+                    Cancel
+                </button>
+            </section>
+            <section class="col-md-2">
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#successModal" (click)="onSubmit()">
+                    Submit
+                </button>
+            </section>
+        </section>
+    </form>
+
+    <!-- Success Modal (For Submit) -->
+    <section class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title text-dark">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </header>
+                <section class="modal-body text-dark">
+                    Manager added successfully!
+                </section>
+                <footer class="modal-footer">
+                    <a routerLink ='admin/addmanager' data-bs-dismiss="modal" class="btn btn-primary">OK</a>
+                </footer>
+            </section>
+        </section>
+    </section>
+
+    <!-- Cancel Confirmation Modal -->
+    <section class="modal fade" id="cancelModal" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title text-dark">Confirm Cancel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </header>
+                <section class="modal-body">
+                    <p class="text-dark">All entered details will be lost. Are you sure you want to cancel?</p>
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a href="addmanager.html" class="btn btn-danger">Yes, Cancel</a>
+                </footer>
+            </section>
+        </section>
+    </section>
+</section>

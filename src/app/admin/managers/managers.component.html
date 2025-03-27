@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+
+<main class="container my-5">
+    
+
+    <!-- manager List Section -->
+    <section class="bg-light p-5 rounded shadow mt-3">
+        <h2 class="text-center text-dark mb-4">Manager List</h2>
+        <div class="text-end mb-3">
+            <button class="btn btn-info" [routerLink]="['/admin/addmanager']">+ New Manager</button>
+        </div>
+        <!-- manager Table -->
+        <div class="table-responsive">
+            <table class="table table-hover text-center" *ngIf="managers.length > 0; else nomanagers">
+                <thead class="table-dark">
+                    <tr>
+                        <th>manager ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Designation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let manager of managers">
+                        <td>{{ manager.id }}</td>
+                        <td>{{ manager.first_name }} {{ manager.last_name }}</td>
+                        <td>{{ manager.email }}</td>
+                        <td>{{ manager.designation}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- No managers Message -->
+        <ng-template #nomanagers>
+            <p class="text-center text-muted">No managers found.</p>
+        </ng-template>
+    </section>
+</main>

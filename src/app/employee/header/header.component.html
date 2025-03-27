@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded p-3">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/" aria-label="Travel home">
+            <i class="bi bi-airplane text-primary fs-3"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a routerLink="/select" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/travel-requests" class="nav-link">Travel Requests</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="employeeDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>  {{ employeeName }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

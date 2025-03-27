@@ -1,0 +1,60 @@
+<app-header></app-header>
+<main class="container my-5">
+
+
+    <!-- Travel Request Form -->
+    <section class="bg-white p-4 mt-4 shadow-sm rounded">
+        <h4 class="text-center mb-3">Travel Request Form</h4>
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+                <label class="form-label">Name</label>
+                <input readonly type="text" value ="{{request.manager.first_name}} {{request.manager.last_name}} " class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">From Location</label>
+                <input readonly type="text" class="form-control" value="{{request.from_location}}" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">To Location</label>
+                <input readonly type="text" class="form-control" value ={{request.to_location}} required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">From Date</label>
+                <input readonly type="text" class="form-control" value ={{request.start_date}} required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">To Date</label>
+                <input readonly type="text" class="form-control" value="{{request.end_date}}" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Lodging Required</label>
+                <input readonly type="text" class="form-control" value="{{request.lodging_required}}" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Lodging Location</label>
+                <input readonly type="text" class="form-control" value={{request.hotel_preference}} required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Travel Mode</label>
+                <input readonly type="text" class="form-control"value ={{request.travel_mode}} required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Purpose of Travel</label>
+                <textarea class="form-control" rows="2" readonly value ={{request.purpose_of_travel}}></textarea>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Additional Request</label>
+                <textarea class="form-control" rows="2" readonly value ={{request.additional_notes}}></textarea>
+            </div>
+            <div class="col-md-12">
+                <label class="form-label">Add Note</label>
+                <textarea class="form-control" rows="2" ></textarea>
+            </div>
+            <div class="col-12 d-flex justify-content-center gap-3 mt-3">
+                <button [routerLink]="['/employee/history']" class="btn btn-success">Back</button>
+                <button class="btn btn-warning" type="submit">Edit</button>
+                <!-- <button class="btn btn-danger" type="button" onclick="window.location.href='emphistory.html'">Close</button> -->
+            </div>
+        </form>
+    </section>
+</main>

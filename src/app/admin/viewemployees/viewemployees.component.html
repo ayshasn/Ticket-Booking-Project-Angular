@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<main class="container my-5">
+    <!-- Navigation Bar
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" aria-label="Company Logo">
+                <i class="bi bi-airplane text-primary fs-3"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a routerLink="/dashboard" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/travel-requests" class="nav-link">Travel Requests</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="AdminDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Admin Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" routerLink="/login">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Employee List Section -->
+    <section class="bg-light p-5 rounded shadow mt-3">
+        <h2 class="text-center text-dark mb-4">Employee List</h2>
+    <div class="cold-md-3 text-end">
+        <button class="btn btn-info mb-3" [routerLink]="['/admin/addemployee']">+ New Employee</button>
+    </div>
+        <!-- Employee Table -->
+        <div class="table-responsive">
+            <table class="table table-hover text-center" *ngIf="employees.length > 0; else noEmployees">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Designation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees">
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.designation }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- No Employees Message -->
+        <ng-template #noEmployees>
+            <p class="text-center text-muted">No employees found.</p>
+        </ng-template>
+    </section>
+</main>

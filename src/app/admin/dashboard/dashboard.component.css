@@ -1,0 +1,12 @@
+.custom-hover {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-hover:hover {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+}

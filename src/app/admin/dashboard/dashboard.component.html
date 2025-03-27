@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+<main class="container my-5">
+    <!-- Admin Dashboard Section -->
+    <section class="bg-light p-5 rounded shadow mt-3 g-5">
+        <h2 class="text-center text-dark mb-4">Admin Dashboard</h2>
+
+        <!-- Search & Sort Row -->
+        <div class="row mb-3">
+            <!-- Search Employee -->
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Employee..." />
+                    <button class="btn btn-primary" (click)="searchEmployee()">Search</button>
+                </div>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                        Sort By Date
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" (click)="dateSort('asc')">Ascending</a></li>
+                        <li><a class="dropdown-item" (click)="dateSort('desc')">Descending</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Status Filter Dropdown -->
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                        Filter By Status
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" (click)="statusFilter('Approved')">Approved</a></li>
+                        <li><a class="dropdown-item" (click)="statusFilter('Pending')">Pending</a></li>
+                        <li><a class="dropdown-item" (click)="statusFilter('Rejected')">Rejected</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class=" col md-3 text-center">
+                <button class="btn btn-info" [routerLink]="['/admin/employees']">Manage Employees</button>
+            </div>
+            <div class=" col md-3 text-center">
+                <button class="btn btn-info" [routerLink]="['/admin/managers']">Manage Employees</button>
+            </div>
+            <div class=" col md-3 text-center">
+                <button class="btn btn-danger" (click)="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+
+        <!-- Travel Request Table -->
+        <div class="table-responsive">
+            <table class="table table-hover text-center">
+                <thead class="table-primary text-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee Name</th>
+                        <th>Manager Name</th>
+                        <th>From Location</th>
+                        <th>To Location</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of details; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ ticket.employee_name }}</td>
+                        <td>{{ ticket.manager_name }}</td>
+                        <td>{{ ticket.from_location }}</td>
+                        <td>{{ ticket.to_location }}</td>
+                        <td>{{ ticket.start_date | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{ ticket.end_date | date: 'yyyy-MM-dd' }}</td>
+                        <td>
+                            <span class="badge" 
+                                  [ngClass]="{
+                                      'bg-warning': ticket.status === 'pending', 
+                                      'bg-danger': ticket.status === 'Rejected', 
+                                      'bg-secondary': ticket.status === 'cancelled',
+                                      'bg-success': ticket.status === 'Approved',
+                                      'bg-primary': ticket.status === 'Closed'
+                                  }">
+                                {{ ticket.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <button [routerLink]="['/admin/viewrequest', ticket.id]" class="btn btn-info btn-sm">View</button>
+                            <button class="btn btn-danger btn-sm mx-1" (click)="onCloseRequest(ticket.id)" *ngIf="ticket.status === 'Approved'">
+                                        Close
+                            </button>                        
+                        </td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
