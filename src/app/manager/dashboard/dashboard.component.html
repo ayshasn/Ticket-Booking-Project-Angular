@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<main class="container my-5">
+    
+
+
+    <!-- Employee Travel Requests Section -->
+    <section class="bg-blue p-5 rounded shadow mt-3">
+        <h2 class="text-center text-dark mb-4">Employee Travel Requests</h2>
+
+        <!-- Search & Sort Row -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Employee..." id="searchEmployee">
+                    <button class="btn btn-info" (click)="searchEmployee()">search</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                      Sort Options
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item">Sort By Date</a></li>
+                      <li><a class="dropdown-item" (click)="dateSort('asc')">Ascending</a></li>
+                      <li><a class="dropdown-item" (click)="dateSort('desc')">Descending</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                      Sort Options
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item">Filter By Status</a></li>
+                      <li><a class="dropdown-item" (click)="statusFilter('approved')">Approved</a></li>
+                      <li><a class="dropdown-item" (click)="statusFilter('pending')">Pending</a></li>
+                      <li><a class="dropdown-item" (click)="statusFilter('rejected')">Rejected</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class=" col md-3 text-center">
+                <button class="btn btn-danger" (click)="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+
+        <!-- Employee Travel Request Table -->
+        <div class="table-responsive">
+            <table class="table table-hover text-center">
+                <thead class="table-primary text-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee Name</th>
+                        <th>From Location</th>
+                        <th>To Location</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of details; let i = index">
+                        <td>{{i + 1}}</td>
+                        <!-- <td>{{ticket.employee}}</td> -->
+                        <td>{{ticket.employee_name}}</td>
+                        <td>{{ticket.from_location}}</td>
+                        <td>{{ticket.to_location}}</td>
+                        <td>{{ticket.start_date}}</td>
+                        <td>{{ticket.end_date}}</td>
+                        
+                        <td><span class="badge" [ngClass]="{'bg-warning': ticket.status === 'pending', 'bg-danger': ticket.status === 'Rejected', 'bg-secondary': ticket.status === 'cancelled','bg-success': ticket.status==='Approved'}">{{ticket.status}}</span></td>
+                        <td>
+                            <a [routerLink]="['/manager/viewrequest', ticket.id]" class="btn btn-info btn-sm">View</a>
+                        </td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+
+
+<div class="container p-3 g-5 bg-light shadow rounded">
+    <form class="row g-5 needs-validation" novalidate>
+        <div class="text-center">
+            <h3>Travel Request Form</h3>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Name</label>
+            <input readonly type="text" class="form-control" value="{{request?.employee?.first_name}}" disabled>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">From Location</label>
+            <input readonly type="text" class="form-control" value="{{request?.from_location}}" disabled>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">To Location</label>
+            <input readonly type="text" class="form-control" value="{{request?.to_location}}"  disabled>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">From Date</label>
+            <input readonly type="text" class="form-control" value="{{request?.start_date}}"  disabled>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">To Date</label>
+            <input readonly type="text" class="form-control" value="{{request?.end_date}}" disabled>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Lodging Required</label>
+            <input readonly type="text" class="form-control" value="{{request?.lodging_required}}"  disabled>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Lodging Location</label>
+            <input readonly type="text" class="form-control" value="{{request?.hotel_preference}}" disabled>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Travel Mode</label>
+            <input readonly type="text" class="form-control" value="{{request?.travel_mode}}">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Purpose of Travel</label>
+            <textarea class="form-control" rows="2" value="{{request?.purpose_of_travel}}"
+                readonly></textarea>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Additional Request</label>
+            <textarea class="form-control" rows="2" readonly  value="{{request?.additional_request}}"> </textarea>
+        </div>
+        <div class="col-12 d-flex justify-content-center gap-3 mt-5">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal"
+                data-bs-target="#approveModal">Approve</button>
+            <button class="btn btn-warning" type="button" data-bs-toggle="modal"
+                data-bs-target="#updateModal">Update Request</button>
+            <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                data-bs-target="#rejectModal">Reject</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Approve Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Approve Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <textarea class="form-control" rows="3" [(ngModel)]="managerNote" placeholder="Enter notes "></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="onApprove()">Approve</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Update Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            
+            <textarea class="form-control" rows="3" placeholder="Enter notes"  [(ngModel)]="managerNote"></textarea>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="onupdateNote()"  >Update</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Reject Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <textarea class="form-control" rows="3" placeholder="Enter notes" [(ngModel)]="managerNote"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="onReject()" data-bs-dismiss="modal">Reject</button>
+        </div>
+    </div>
+</div>
+</div>
