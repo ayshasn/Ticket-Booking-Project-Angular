@@ -1,0 +1,21 @@
+<main role="main"class="vh-100 d-flex align-items-center justify-content-center bg-req">
+    <section class="p-5 rounded shadow-lg bg-light text-center">
+        <h1 class="mb-3" tabindex="0">Select User</h1>
+
+        <button onclick="location.href='adminlogin.html'" class="btn btncolor w-100 mb-2 p-3" 
+                aria-label="Admin Login" tabindex="0">
+            <i class="bi bi-shield-lock-fill me-2"></i> Admin
+        </button>
+
+        <button  class="btn btncolor1 w-100 mb-2 p-3" 
+                aria-label="Employee Login" tabindex="0"  [routerLink]="['/employee/emplogin']">
+            <i class="bi bi-person-fill me-2"></i> Employee
+        </button>
+
+        <button onclick="location.href='Managerlogin.html'" class="btn btncolor2 w-100 p-3" 
+                aria-label="Manager Login" tabindex="0"  [routerLink]="['/manager/managerlogin']">
+            <i class="bi bi-briefcase-fill me-2"></i> Manager
+        </button>
+    </section>
+</main>
+
